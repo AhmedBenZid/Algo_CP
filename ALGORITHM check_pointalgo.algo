@@ -2,13 +2,11 @@ ALGORITHM check_point
 VAR
     i: INTEGER;
     str_length, word_nbr, vowel_nbr : INTEGER := 0;
-    str : STRING;
+    str : STRING[]:="Ahmed Ben Zid.";
 BEGIN
-    Read(str);
     str_length := (str.length) - 1;
     FOR i FROM 1 TO str_length STEP 1  DO
-        Read(str[i]);
-        IF (str[i] = " ") THEN
+        IF (str[i] =' ') THEN
             word_nbr := word_nbr + 1;
         END_IF
 
