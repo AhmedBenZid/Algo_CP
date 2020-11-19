@@ -5,14 +5,14 @@ VAR
     str : STRING;
 BEGIN
     Read(str);
-    str_length := length(str);
-    FOR i FROM 1 TO str_length STEP step  DO
-        
-        IF (step = " ") THEN
+    str_length := (str.length) - 1;
+    FOR i FROM 1 TO str_length STEP 1  DO
+        Read(str[i]);
+        IF (str[i] = " ") THEN
             word_nbr := word_nbr + 1;
         END_IF
 
-        IF (step in ['a','A','E','e','I','i','O','o','U','u']) THEN
+        IF (str[i] in ['a','A','E','e','I','i','O','o','U','u']) THEN
             vowel_nbr := vowel_nbr + 1;
         END_IF
     END_FOR
