@@ -1,0 +1,60 @@
+// First Solution using Two Tables like a data structure
+
+ALGORITHM sum_distinct
+VAR
+    sum : INTEGER = 0;
+    i,l1,l2,j,k: INTEGER;
+    set1 : ARRAY_OF INTEGER[5];
+    set2 : ARRAY_OF INTEGER[5];
+    tab : ARRAY_OF INTEGER[5];
+BEGIN
+    set1 := {3,1,7,9}
+    set2 := {2,4,1,9,3}
+    l1 := set1.length;
+    l2 := set2.length;
+    k:=0;
+    FOR i FROM 0 TO l1-1 STEP 1  DO
+        FOR j FROM 0 TO l2-1 STEP 1  DO
+            IF (set1[i]<>set2[j]) THEN
+                sum := sum + set1[i];
+            ELSE
+                tab[k]:=set1[i];
+                k := k+1;
+                END_FOR
+            END_IF
+            
+        END_FOR
+    END_FOR
+    Write('Somme :',sum);
+    FOR k FROM 0 TO tab.length-1 STEP 1  DO
+        Write(tab[k]);
+    END_FOR
+END
+
+// Second Solution using a HashTable like a Data Structure
+
+ALGORITHM sum_distinct_hash
+VAR
+    set1 : HASH_TABLE<INTEGER,INTEGER>;
+    set2, tab : ARRAY_OF INTEGER [10];
+    i,sum,k : INTEGER;
+BEGIN
+    set2 := {13,10,16,15};
+    set1.insert(12,1);
+    set1.insert(13,1);
+    set1.insert(6,1);
+    set1.insert(10,1);
+    sum :=0;
+    k := 0;
+    FOR i FROM 0 TO set2.length-1 DO
+        IF (set1.lookup(set2[i]=TRUE)) THEN
+            ste1.insert(str2[i],2);
+            tab[k] := set1.get(str2[i]);
+            k := k+1;
+        ELSE
+            sum := sum + str2[i];
+            set1.insert(str2[i],1);
+        END_IF
+    END_FOR
+    Write(sum);
+END
