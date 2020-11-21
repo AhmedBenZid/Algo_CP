@@ -63,7 +63,7 @@ BEGIN
         END_IF
     END_FOR
     key := set1.keys();
-    val := set1.val();
+    val := set1.values();
     FOR i FROM 0 TO key.length-1 STEP 1  DO
         IF (val[i]=1) THEN
             sum:= sum + key[i];
