@@ -20,7 +20,16 @@ BEGIN
             ELSE
                 tab[k]:=set1[i];
                 k := k+1;
-                END_FOR
+                
+            END_IF
+            
+        END_FOR
+    END_FOR
+    
+    FOR j FROM 0 TO l2-1 STEP 1  DO
+        FOR i FROM 0 TO l1-1 STEP 1  DO
+            IF (set2[j]<>set1[i]) THEN
+                sum := sum + set2[j];
             END_IF
             
         END_FOR
@@ -36,7 +45,7 @@ END
 ALGORITHM sum_distinct_hash
 VAR
     set1 : HASH_TABLE<INTEGER,INTEGER>;
-    set2, tab : ARRAY_OF INTEGER [10];
+    set2, tab,key,val : ARRAY_OF INTEGER [10];
     i,sum,k : INTEGER;
 BEGIN
     set2 := {13,10,16,15};
@@ -49,12 +58,20 @@ BEGIN
     FOR i FROM 0 TO set2.length-1 DO
         IF (set1.lookup(set2[i]=TRUE)) THEN
             ste1.insert(str2[i],2);
-            tab[k] := set1.get(str2[i]);
-            k := k+1;
         ELSE
-            sum := sum + str2[i];
             set1.insert(str2[i],1);
         END_IF
     END_FOR
+    key := set1.keys();
+    val := set1.val();
+    FOR i FROM 0 TO key.length-1 STEP 1  DO
+        IF (val[i]=1) THEN
+            sum:= sum + key[i];
+        ELSE
+            tab[k] := key[i];
+            k:=k+1;
+        END_IF
+    END_FOR
+    
     Write(sum);
 END
