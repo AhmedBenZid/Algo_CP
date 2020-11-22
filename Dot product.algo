@@ -1,0 +1,50 @@
+// Procedure Dot Product
+
+PROCEDURE dot_product(v1,v2 : ARRAY_OF FLOAT[10];;n:INTEGER)
+VAR
+    i : INTEGER;
+    p : FLOAT;
+BEGIN
+    p:=0;
+    FOR i FROM 0 TO n-1 STEP   DO
+        p:= v1[i]*v2[i];
+        WHILE (p<>0) DO
+            Write('This two Vectors (',v1[i],',',v2[i],') Not orthogonal.');
+        END_WHILE
+        Write('This two Vectors (',v1[i],',',v2[i],') are orthogonal.');
+    END_FOR
+END
+
+// Function Dot Product
+
+FUNCTION dot_productF(v1,v2 : ARRAY_OF FLOAT[10]; n:INTEGER) : STRING;
+VAR
+    i:INTEGER;
+    p:FLOAT;
+BEGIN
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        p := v1[i]*v2[i];
+        IF (p=0) THEN
+            RETURN ('This two Vectors (',v1[i],',',v2[i],') are orthogonal.');
+           ELSE 
+            RETURN  ('This two Vectors (',v1[i],',',v2[i],') Not orthogonal.');
+        END_IF
+    END_FOR
+    
+END
+
+// Principal Program
+
+ALGORITHM Orthogonal
+VAR
+    vector_1, vector_2 : ARRAY_OF FLOAT[10];
+    n,i : INTEGER;
+
+BEGIN
+    vector_1 := {.....};
+    vector_2 := {.....};
+    // calling the Procedure
+    dot_product(vector_1,vector_2,n);
+    // calling function
+    Write(dot_productF(vector_1,vector_2,n));
+END
